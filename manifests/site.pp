@@ -1,4 +1,5 @@
 ## site.pp ##
+include 'docker'
 
 # This file (/etc/puppetlabs/puppet/manifests/site.pp) is the main entry point
 # used when an agent connects to a master and asks for an updated configuration.
@@ -29,4 +30,11 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
+  class {'docker::compose':
+  ensure => present,
+  version => '1.9.0',
+}
+  docker_compose { './docker-compose.yml':
+  ensure  => present,
+}
 }

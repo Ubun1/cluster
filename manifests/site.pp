@@ -10,11 +10,11 @@ node default {
 
   file {'nginx.conf': 
     path => "/tmp/nginx.conf",
-    source => "puppet:///config/nginx.conf"
+    source => "puppet:///modules/config/nginx.conf"
   }
 
   file {'docker-compose': path => '/tmp/docker-compose.yml', 
-  source => "puppet:///config/docker-compose.yml"
+  source => "puppet:///modules/config/docker-compose.yml"
 }
   docker_compose { '/tmp/docker-compose.yml': ensure   => present }
 }
